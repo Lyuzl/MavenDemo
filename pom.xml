@@ -5,11 +5,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
-  <properties>  
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
-    <spring.version>4.3.13.RELEASE</spring.version>  
-  </properties>  
-  
   <!-- 由于你的 Maven 编译级别是 jdk1.5 或以下，而你导入了 jdk1.6 以上的依赖包, 
                   报 Dynamic Web Module 3.0 requires Java 1.6 or newer 错误，添加如下配置，
                   将 maven 编译级别改为 jdk1.6 以上      
@@ -28,56 +23,47 @@
 	    </plugins>
   </build>
   
+  <properties>  
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+    <spring.version>4.3.13.RELEASE</spring.version>  
+  </properties>  
+  
   <dependencies>
-  	<dependency>
-  		<groupId>dom4j</groupId>
-  		<artifactId>dom4j</artifactId>
-  		<version>1.6.1</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>mysql</groupId>
-  		<artifactId>mysql-connector-java</artifactId>
-  		<version>6.0.5</version>
-  	</dependency>
-  	
-  	<!-- spring begin -->  
-  	
+  
+  	<!-- spring begin --> 
+  	<!-- 1:spring 核心 --> 
+  	<dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-core</artifactId>  
+        <version>${spring.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-aop</artifactId>  
+        <version>${spring.version}</version>  
+    </dependency>
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-context</artifactId>  
+        <version>${spring.version}</version>  
+    </dependency>  
+    <!-- 2:spring DAO层 -->
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-jdbc</artifactId>  
+        <version>${spring.version}</version>  
+    </dependency> 
+    <!-- 3:spring web -->
 	<dependency>  
 	    <groupId>org.springframework</groupId>  
 	    <artifactId>spring-webmvc</artifactId>  
 	    <version>${spring.version}</version>  
 	</dependency>  
-	  
-	<dependency>  
-	    <groupId>org.springframework</groupId>  
-	    <artifactId>spring-jdbc</artifactId>  
-	    <version>${spring.version}</version>  
-	</dependency>  
-	
 	<dependency>  
         <groupId>org.springframework</groupId>  
         <artifactId>spring-web</artifactId>  
         <version>${spring.version}</version>  
     </dependency>  
-	  
-	<dependency>  
-	    <groupId>org.springframework</groupId>  
-	    <artifactId>spring-context</artifactId>  
-	    <version>${spring.version}</version>  
-	</dependency>  
-	  
-	<dependency>  
-	    <groupId>org.springframework</groupId>  
-	    <artifactId>spring-aop</artifactId>  
-	    <version>${spring.version}</version>  
-	</dependency>  
-	  
-	<dependency>  
-	    <groupId>org.springframework</groupId>  
-	    <artifactId>spring-core</artifactId>  
-	    <version>${spring.version}</version>  
-	</dependency>  
-	  
 	<dependency>  
 	    <groupId>org.springframework</groupId>  
 	    <artifactId>spring-test</artifactId>  
@@ -86,7 +72,63 @@
 	
 	<!-- spring end -->  
 	
+	<!-- 单元测试 -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
 	
+	<!-- 日志 -->
+	<dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.2</version>
+    </dependency>
+    
+    <!-- 数据库 -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>6.0.5</version>
+    </dependency>
+    
+    <!-- DAO: MyBatis -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>1.2.3</version>
+    </dependency>
+    
+    <!-- 3.Servlet web -->
+    <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>1.1.2</version>
+    </dependency>
+    <dependency>
+        <groupId>jstl</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.5.4</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+    </dependency>
+        
+    
   </dependencies>
 
 </project>
